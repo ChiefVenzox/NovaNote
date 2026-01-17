@@ -1,0 +1,56 @@
+{
+  "name": "nova-dashboard",
+  "version": "1.0.0",
+  "description": "A premium personal productivity dashboard for Windows",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "build": "electron-builder --win",
+    "build:appx": "electron-builder --win appx"
+  },
+  "author": "Antigravity",
+  "license": "ISC",
+  "devDependencies": {
+    "electron": "latest",
+    "electron-builder": "^24.6.4"
+  },
+  "build": {
+    "appId": "com.antigravity.nova-dashboard",
+    "productName": "Nova Dashboard",
+    "copyright": "Copyright © 2026 Antigravity",
+    "win": {
+      "target": [
+        {
+          "target": "appx",
+          "arch": [
+            "x64"
+          ]
+        }
+      ],
+      "icon": "icon.png"
+    },
+    "appx": {
+      "identityName": "PLACEHOLDER-IdentityName",
+      "publisher": "CN=PLACEHOLDER-Publisher",
+      "publisherDisplayName": "Antigravity",
+      "applicationId": "NovaDashboard",
+      "displayName": "Nova Dashboard",
+      "languages": [
+        "tr-TR",
+        "en-US",
+        "de-DE"
+      ],
+      "showNameOnTiles": true,
+      "backgroundColor": "#6C5DD3"
+    },
+    "files": [
+      "**/*",
+      "!node_modules/*/{CHANGELOG.md,README.md,README,readme.md,readme}",
+      "!node_modules/*/{test,__tests__,tests,powered-test,example,examples}",
+      "!node_modules/.cache/**/*"
+    ],
+    "directories": {
+      "output": "dist"
+    }
+  }
+}

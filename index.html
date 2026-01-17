@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nova Dashboard</title>
+    <link rel="stylesheet" href="styles.css">
+    <!-- Google Fonts: Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div class="container">
+        <!-- Pencere Kontrolleri -->
+        <div class="title-bar">
+            <div class="drag-region">Nova</div>
+            <div class="window-controls">
+                <!-- Dil Seçici -->
+                <div class="lang-selector">
+                    <button id="lang-btn" class="control-btn lang-btn" title="Dil Seç">🌐</button>
+                    <div class="lang-dropdown" id="lang-dropdown">
+                        <button class="lang-option" data-lang="tr">🇹🇷 Türkçe</button>
+                        <button class="lang-option" data-lang="en">🇬🇧 English</button>
+                        <button class="lang-option" data-lang="de">🇩🇪 Deutsch</button>
+                    </div>
+                </div>
+                <button id="theme-btn" class="control-btn" data-i18n-title="themeToggle">◐</button>
+                <button id="min-btn" class="control-btn">-</button>
+                <button id="close-btn" class="control-btn">&times;</button>
+            </div>
+        </div>
+
+        <!-- Ana İçerik -->
+        <div class="content">
+            <!-- Üst Bölüm: Saat ve Pomodoro -->
+            <div class="top-section">
+                <!-- Saat ve Tarih -->
+                <div class="clock-section">
+                    <div id="clock" class="clock">00:00</div>
+                    <div id="date" class="date">Pazartesi, 1 Ocak</div>
+                </div>
+
+                <!-- Pomodoro Zamanlayıcı -->
+                <div class="pomodoro-section">
+                    <div class="pomodoro-display">
+                        <span id="pomodoro-time">25:00</span>
+                        <span id="pomodoro-label" class="pomodoro-label" data-i18n="focus">Odaklan</span>
+                    </div>
+                    <div class="pomodoro-controls">
+                        <button id="pomodoro-start" class="pomodoro-btn">▶</button>
+                        <button id="pomodoro-reset" class="pomodoro-btn">↺</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- İstatistikler -->
+            <div class="stats-section">
+                <div class="stat-card">
+                    <span class="stat-value" id="stat-today">0</span>
+                    <span class="stat-label" data-i18n="today">Bugün</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-value" id="stat-week">0</span>
+                    <span class="stat-label" data-i18n="thisWeek">Bu Hafta</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-value" id="stat-total">0</span>
+                    <span class="stat-label" data-i18n="total">Toplam</span>
+                </div>
+            </div>
+
+            <!-- Ayırıcı Çizgi -->
+            <div class="divider"></div>
+
+            <!-- Yapılacaklar Listesi -->
+            <div class="todo-section">
+                <h3 data-i18n="goals">Hedefler</h3>
+
+                <!-- Tab Buttons -->
+                <div class="tabs">
+                    <button class="tab-btn active" data-tab="daily" data-i18n="daily">Günlük</button>
+                    <button class="tab-btn" data-tab="weekly" data-i18n="weekly">Haftalık</button>
+                    <button class="tab-btn" data-tab="general" data-i18n="general">Genel</button>
+                </div>
+
+                <div class="input-group">
+                    <input type="text" id="todo-input" data-i18n-placeholder="goalPlaceholder"
+                        placeholder="Hedefiniz nedir?">
+                    <div class="time-picker-wrapper">
+                        <input type="text" id="todo-time" data-i18n-placeholder="timePlaceholder" placeholder="⏰ Zaman"
+                            class="time-input" readonly>
+                        <div class="time-picker-popup" id="time-popup">
+                            <div class="time-picker-section">
+                                <span class="time-section-title" data-i18n="labels">Etiketler</span>
+                                <div class="time-options">
+                                    <button class="time-option" data-i18n-value="today">Bugün</button>
+                                    <button class="time-option" data-i18n-value="tomorrow">Yarın</button>
+                                    <button class="time-option" data-i18n-value="urgent">🔥 Acil</button>
+                                    <button class="time-option" data-i18n-value="thisWeek">Bu Hafta</button>
+                                    <button class="time-option" data-i18n-value="nextWeek">Gelecek Hafta</button>
+                                </div>
+                            </div>
+                            <div class="time-picker-section">
+                                <span class="time-section-title" data-i18n="morning">Sabah</span>
+                                <div class="time-options">
+                                    <button class="time-option" data-value="06:00">06:00</button>
+                                    <button class="time-option" data-value="07:00">07:00</button>
+                                    <button class="time-option" data-value="08:00">08:00</button>
+                                    <button class="time-option" data-value="09:00">09:00</button>
+                                    <button class="time-option" data-value="10:00">10:00</button>
+                                    <button class="time-option" data-value="11:00">11:00</button>
+                                </div>
+                            </div>
+                            <div class="time-picker-section">
+                                <span class="time-section-title" data-i18n="afternoon">Öğleden Sonra</span>
+                                <div class="time-options">
+                                    <button class="time-option" data-value="12:00">12:00</button>
+                                    <button class="time-option" data-value="13:00">13:00</button>
+                                    <button class="time-option" data-value="14:00">14:00</button>
+                                    <button class="time-option" data-value="15:00">15:00</button>
+                                    <button class="time-option" data-value="16:00">16:00</button>
+                                    <button class="time-option" data-value="17:00">17:00</button>
+                                </div>
+                            </div>
+                            <div class="time-picker-section">
+                                <span class="time-section-title" data-i18n="evening">Akşam</span>
+                                <div class="time-options">
+                                    <button class="time-option" data-value="18:00">18:00</button>
+                                    <button class="time-option" data-value="19:00">19:00</button>
+                                    <button class="time-option" data-value="20:00">20:00</button>
+                                    <button class="time-option" data-value="21:00">21:00</button>
+                                    <button class="time-option" data-value="22:00">22:00</button>
+                                    <button class="time-option" data-value="23:00">23:00</button>
+                                </div>
+                            </div>
+                            <div class="time-picker-section">
+                                <span class="time-section-title" data-i18n="customTime">Özel Saat</span>
+                                <div class="custom-time-row">
+                                    <input type="time" id="custom-time-input" class="custom-time-input">
+                                    <button id="custom-time-add" class="custom-time-btn" data-i18n="add">Ekle</button>
+                                </div>
+                            </div>
+                            <button class="time-clear-btn" id="time-clear" data-i18n="clear">Temizle</button>
+                        </div>
+                    </div>
+                    <button id="add-btn">+</button>
+                </div>
+                <ul id="todo-list">
+                    <!-- Dinamik olarak eklenecek -->
+                </ul>
+            </div>
+
+            <!-- Ayırıcı Çizgi -->
+            <div class="divider"></div>
+
+            <!-- Hızlı Notlar -->
+            <div class="notes-section">
+                <h3 data-i18n="notes">Notlar</h3>
+                <div class="note-input-group">
+                    <input type="text" id="note-input" data-i18n-placeholder="notePlaceholder"
+                        placeholder="Not ekle...">
+                    <button id="add-note-btn">+</button>
+                </div>
+                <ul id="notes-list">
+                    <!-- Dinamik olarak eklenecek -->
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <script src="renderer.js"></script>
+</body>
+
+</html>
